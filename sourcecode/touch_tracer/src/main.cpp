@@ -30,8 +30,6 @@
 	#endif  
 #endif
 
-#define WINDOWED_MODE
-
 #include "main.h"
 
 using namespace std;
