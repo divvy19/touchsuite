@@ -14,6 +14,9 @@
 // Copyright (C) 2007-2009 Laurence Muller
 //////////////////////////////////////////////////////////////////////////////////////////
 
+#ifndef TOUCH_TRACER_H_
+#define TOUCH_TRACER_H_
+
 #ifdef WIN32	
 	#define _CRT_SECURE_NO_DEPRECATE	
 #endif
@@ -105,3 +108,5 @@ class touch_tracer : public TuioListener {
 };
 
 }
+
+#endif /* TOUCH_TRACER_H_ */

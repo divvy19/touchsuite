@@ -136,10 +136,10 @@ void touch_tracer::draw_scene(GLenum mode)
 			glEnd();				
 
 			// Create a circle			
+			alpha = 1.0;
 			glColor4f(c[blob_colour_gl[iter1->first]].R, c[blob_colour_gl[iter1->first]].G, c[blob_colour_gl[iter1->first]].B, alpha);
 			glLineWidth(2.0);
-			alpha = 1.0;
-
+			
 			iter2 = --iter1->second.end();						
 			glBegin(GL_LINE_LOOP);
  			for (int i = 0; i < SEGMENTS; ++i)
@@ -248,22 +248,94 @@ void touch_tracer::render_bitmap_character(int x, int y, char *string)
 
 void touch_tracer::draw_info(int ID, float X, float Y)
 {
+	char buffer[64];	
+	bool labelRight = false;
+	bool labelBottom = false;
+
+	int newX = X * screen_width;
+	int newY = Y * screen_height;
+
+	if((screen_width - newX) < 80)
+		labelRight = true;
+
+	if((screen_height - newY) < 55)
+		labelBottom = true;
+
 	glLineWidth(1.0);
 	glColor3f(1.0f, 0.0f, 0.0f);
-	glBegin(GL_LINES);			
-		glVertex2f((X * screen_width)	  , (Y * screen_height)	);
-		glVertex2f((X * screen_width) + 16, (Y * screen_height) + 16);
-		glVertex2f((X * screen_width) + 16, (Y * screen_height) + 16);
-		glVertex2f((X * screen_width) + 16, (Y * screen_height) + 52);
-	glEnd( );		
+	glBegin(GL_LINE_STRIP);			
+		glVertex2f((X * screen_width), (Y * screen_height));
+
+		if(labelRight)
+		{
+			if(labelBottom)
+			{
+				glVertex2f(newX - 16, newY - 16);
+				glVertex2f(newX - 16, newY - 52);
+			}
+			else
+			{
+				glVertex2f(newX - 16, newY + 16);
+				glVertex2f(newX - 16, newY + 52);
+			}
+		}
+		else
+		{
+			if(labelBottom)
+			{
+				glVertex2f(newX + 16, newY - 16);
+				glVertex2f(newX + 16, newY - 52);
+			}
+			else
+			{
+				glVertex2f(newX + 16, newY + 16);
+				glVertex2f(newX + 16, newY + 52);
+			}
+		}		
+	glEnd();		
 			
-	char buffer[64];	
-	sprintf(buffer, "ID #%d", ID);   
-	render_bitmap_character((int)(X * screen_width) + 17, (int)(Y * screen_height) + 26, buffer);
-	sprintf(buffer, "X = %d", (int)(X * screen_width));   
-	render_bitmap_character((int)(X * screen_width) + 17, (int)(Y * screen_height) + 38, buffer);
-	sprintf(buffer, "Y = %d", (int)(Y * screen_height));   
-	render_bitmap_character((int)(X * screen_width) + 17, (int)(Y * screen_height) + 50, buffer); 
+	if(labelRight)
+	{
+		if(labelBottom)
+		{
+			sprintf(buffer, "ID #%d", ID);   
+			render_bitmap_character(newX - 83, newY - 42, buffer);			
+			sprintf(buffer, "X = %d", newX);   
+			render_bitmap_character(newX - 82, newY - 30, buffer);
+			sprintf(buffer, "Y = %d", newY);   
+			render_bitmap_character(newX - 82, newY - 18, buffer);
+		}
+		else
+		{
+			sprintf(buffer, "ID #%d", ID);   
+			render_bitmap_character(newX - 83, newY + 26, buffer);			
+			sprintf(buffer, "X = %d", newX);   
+			render_bitmap_character(newX - 82, newY + 38, buffer);
+			sprintf(buffer, "Y = %d", newY);   
+			render_bitmap_character(newX - 82, newY + 50, buffer); 
+		}
+	}
+	else
+	{
+		if(labelBottom)
+		{
+			sprintf(buffer, "ID #%d", ID);   
+			render_bitmap_character(newX + 17, newY - 42, buffer);			
+			sprintf(buffer, "X = %d", newX);   
+			render_bitmap_character(newX + 18, newY - 30, buffer);
+			sprintf(buffer, "Y = %d", newY);   
+			render_bitmap_character(newX + 18, newY - 18, buffer); 
+		}
+		else
+		{
+			sprintf(buffer, "ID #%d", ID);   
+			render_bitmap_character(newX + 17, newY + 26, buffer);			
+			sprintf(buffer, "X = %d", newX);   
+			render_bitmap_character(newX + 18, newY + 38, buffer);
+			sprintf(buffer, "Y = %d", newY);   
+			render_bitmap_character(newX + 18, newY + 50, buffer); 
+		}
+	}			
 }
 
 }
