@@ -1,0 +1,42 @@
+[
+	uuid(764ED8E5-0FA7-15D6-8ADE-0FFFEDB6FCCB),
+	version(1.2),
+	helpstring("TouchlibCOMwrapper")
+]
+library TouchlibCOMwrapper
+{
+	importlib("stdole2.tlb");
+
+	typedef struct 
+	{
+		int ID;
+		int tagID;
+		float X;
+		float Y;
+
+		float height;
+		float width;
+		float angle;
+
+		float area;
+
+		float dX;
+		float dY;
+	} TouchData;
+
+	[
+		uuid(0a2f9a9e-0f6e-1dc2-a7bf-17c09f8eea46),
+		version(1.2)
+	]
+	interface COM_ITouchListener : IUnknown
+	{
+		//! Notify that a finger has just been made active. 
+		void _stdcall fingerDown(TouchData data);
+
+		//! Notify that a finger has just been made active. 
+		void _stdcall fingerUpdate( TouchData data);
+
+		//! A finger is no longer active..
+		void _stdcall fingerUp( TouchData data);
+	};
+}

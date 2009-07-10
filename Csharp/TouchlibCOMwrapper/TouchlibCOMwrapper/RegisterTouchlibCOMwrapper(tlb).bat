@@ -1,0 +1,1 @@
+regtlib.exe TouchlibCOMwrapper.tlb
