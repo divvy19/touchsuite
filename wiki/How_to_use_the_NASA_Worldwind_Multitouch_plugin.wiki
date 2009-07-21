@@ -1,4 +1,6 @@
-How to build and use the NASA Worldwind multitouch plugin
+*How to build and use the NASA Worldwind multitouch plugin*
+
+<wiki:toc max_depth="2" />
 
 = Requirements =
   * WinXP or higher.
