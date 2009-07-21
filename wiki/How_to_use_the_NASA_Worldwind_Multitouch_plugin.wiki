@@ -10,36 +10,57 @@ How to build and use the NASA Worldwind multitouch plugin
 
 == Building the TouchlibCOMwrapper ==
   # [http://www.multigesture.net/articles/touchlib-compiling-instructions/ Compile touchlib]
-  # Use TortoiseSVN to do a checkout of http://touchsuite.googlecode.com/svn/trunk/Csharp/
+  # Use TortoiseSVN to do a checkout of http://touchsuite.googlecode.com/svn/trunk/Csharp/ 
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww1.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww1%20(WinCE).jpg]
   # Open up TouchlibCOMwrapper.sln in the TouchlibCOMwrapper directory.
   # Press ALT-F7 to open up the project properties.
   # Set configuration to Release.
   # Go to C/C++ > General and open up "Additional Include Directories".
   # Replace "$(SolutionDir)/../touchlib/include" with the path to your touchlib include directory.
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww2.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww2%20(WinCE).jpg]
   # Go to Linker > General and open up "Additional Library Directories".
   # Replace "$(SolutionDir)/../touchlib/lib" with the path to your touchlib lib directory.
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww3.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww3%20(WinCE).jpg]
   # Click OK.
   # Set the project mode to release mode and press F7 (Build solution).
   # In the directory "Csharp\TouchlibCOMwrapper\release" there should be a file TouchlibCOMwrapper.lib and TouchlibCOMwrapper.dll. We will need these files later on.
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww4.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww4%20(WinCE).jpg]
 
 == Register the TouchlibCOMwrapper ==
   # I have included a compiled build of TouchlibCOMwrapper.idl, if you need to recompile it, please read the instructions in readme_COM.txt
   # To register the wrapper double click the following batch file: RegisterTouchlibCOMwrapper(tlb).bat.
+  # You could also run the batch file from a commandline box:
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww5.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww5%20(WinCE).jpg]
   # If you don't register this file, you will not be able to add a reference to this wrapper to the C# project.
 
 == Compiling NASA World Wind and the Multitouch plug-in ==
   # Use [http://www.7-zip.org/ 7-zip] to decompress World_Wind_1.4.0_Source.7z (directory: Csharp\Nasa_World_Wind_plugin ).
   # Put Multitouch.cs in \World_Wind_1.4.0_Source\WorldWind\
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww6.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww6%20(WinCE).jpg] -> [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww7.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww7%20(WinCE).jpg]
   # Open WorldWind.sln
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww8.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww8%20(WinCE).jpg]
   # Add the file (Multitouch.cs) to the project "WorldWind" in the solution explorer
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww9.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww9%20(WinCE).jpg] -> [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww10.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww10%20(WinCE).jpg] -> [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww11.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww11%20(WinCE).jpg]
   # Make sure that the wrapper library is installed (if you haven't already done it, run RegisterTouchlibCOMwrapper(tlb).bat once)
   # Add a reference (Rightclick on the left on WorldWind>References>Add Reference) to the TouchlibCOMwrapper.tlb (which is located in the TouchlibCOMwrapper directory).
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww12.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww12%20(WinCE).jpg] -> [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww13.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww13%20(WinCE).jpg] -> [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww14.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww14%20(WinCE).jpg] -> [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww15.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww15%20(WinCE).jpg]
   # ~~Set the project to Release Mode and x86~~
   # Set the project to Debug Mode and 'Any CPU'(for now the project won't build in release mode)
   # Build the application (Press F7).
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww16.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww16%20(WinCE).jpg]
   # Copy over all touchlib dll and touchlib config files, and also copy TouchlibCOMwrapper.dll to the bin dir of NWW (World_Wind_1.4.0_Source\World_Wind_1.4.0_Source\bin\Debug).
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww17.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww17%20(WinCE).jpg] -> [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww18.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww18%20(WinCE).jpg]
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww19.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww19%20(WinCE).jpg] -> [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww20.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww20%20(WinCE).jpg]
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww21.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww21%20(WinCE).jpg]
   # Run NWW (WorldWind.exe)
   # Load the 'multitouch' plugin from the plugin window
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww22.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww22%20(WinCE).jpg]
+  # Select Multitouch from the list and click on Load
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww23.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww23%20(WinCE).jpg]
+  # After clicking on Load, it should start Touchlib in the background (video dialogs should appear)
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww24.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww24%20(WinCE).jpg]
+  # Enable fullscreen:
+  # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww25.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww25%20(WinCE).jpg]
 
 == Using the Multitouch plug-in in NASA World Wind ==
   # N/A
