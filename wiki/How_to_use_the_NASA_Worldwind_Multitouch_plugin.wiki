@@ -63,7 +63,14 @@ How to build and use the NASA Worldwind multitouch plugin
   # [http://touchsuite.googlecode.com/svn/site/images/worldwind/nww25.jpg http://touchsuite.googlecode.com/svn/site/images/worldwind/nww25%20(WinCE).jpg]
 
 == Using the Multitouch plug-in in NASA World Wind ==
-  # N/A
+  # Enable the fullscreen mode
+  # Single touch == pan earth
+  # Two touches == zoom/rotate
+  
+=== Adjusting sensitivity (Requires re-compiling the source) ===
+  # Panning: Change the value of lines 207 and 208 (Multitouch.cs) from 3000 to another value.
+  # Zoom: Change the value of line 64 (Multitouch.cs) (RotationFactor)
+  # Rotate: Change the value of line 63 (Multitouch.cs) (ZoomFactor)
 
 = Known issues =
   * Currently you can only load the plug-in once. Unloading and loading the plugin again will not work. You will need to restart NASA World Wind.
