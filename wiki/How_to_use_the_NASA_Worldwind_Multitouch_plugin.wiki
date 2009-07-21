@@ -35,6 +35,7 @@ How to build and use the NASA Worldwind multitouch plugin
   # Make sure that the wrapper library is installed (if you haven't already done it, run RegisterTouchlibCOMwrapper(tlb).bat once)
   # Add a reference (Rightclick on the left on WorldWind>References>Add Reference) to the TouchlibCOMwrapper.tlb (which is located in the TouchlibCOMwrapper directory).
   # ~~Set the project to Release Mode and x86~~
+  # Set the project to Debug Mode and x86
   # Build the application (Press F7).
   # Copy over all touchlib dll and touchlib config files, and also copy TouchlibCOMwrapper.dll to the bin dir of NWW.
   # Run NWW
